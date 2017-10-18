@@ -7,38 +7,49 @@ import android.view.SurfaceView;
 import android.widget.Toast;
 
 import com.google.zxing.Result;
-import com.google.zxing.client.android.AutoScannerView;
+import com.google.zxing.client.android.AnimeViewCallback;
 import com.google.zxing.client.android.BaseCaptureActivity;
+import com.google.zxing.client.android.FlowLineView;
 
-/**
- * 模仿微信的扫描界面
- */
-public class WeChatCaptureActivity extends BaseCaptureActivity {
+public class AliCaptureActivity extends BaseCaptureActivity {
 
-    private static final String TAG = WeChatCaptureActivity.class.getSimpleName();
-
+    private static final String TAG = "AliCaptureActivity";
     private SurfaceView surfaceView;
-    private AutoScannerView autoScannerView;
-
+    private FlowLineView flowLineView;
+    private boolean isPause = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wechat_capture);
+        setContentView(R.layout.activity_ali_capture);
         surfaceView = (SurfaceView) findViewById(R.id.preview_view);
-        autoScannerView = (AutoScannerView) findViewById(R.id.autoscanner_view);
+        flowLineView = (FlowLineView) findViewById(R.id.autoscanner_view);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        autoScannerView.setCameraManager(cameraManager);
+        flowLineView.setCameraManager(cameraManager);
+        if(isPause){
+            flowLineView.Pause();
+        }
     }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        flowLineView.Pause();
+        isPause = true;
+    }
 
     @Override
     public SurfaceView getSurfaceView() {
         return (surfaceView == null) ? (SurfaceView) findViewById(R.id.preview_view) : surfaceView;
+    }
+
+        @Override
+    public AnimeViewCallback getViewfinderHolder() {
+        return (flowLineView == null) ? (FlowLineView) findViewById(R.id.viewfinder_view) : flowLineView;
+//            return null;
     }
 
     @Override

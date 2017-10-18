@@ -7,6 +7,7 @@ import android.view.SurfaceView;
 import android.widget.Toast;
 
 import com.google.zxing.Result;
+import com.google.zxing.client.android.AnimeViewCallback;
 import com.google.zxing.client.android.BaseCaptureActivity;
 import com.google.zxing.client.android.ViewfinderView;
 
@@ -34,7 +35,7 @@ public class DefaultCaptureActivity extends BaseCaptureActivity {
     }
 
     @Override
-    public ViewfinderView getViewfinderHolder() {
+    public AnimeViewCallback getViewfinderHolder() {
         return (viewfinderView == null) ? (ViewfinderView) findViewById(R.id.viewfinder_view) : viewfinderView;
     }
 
