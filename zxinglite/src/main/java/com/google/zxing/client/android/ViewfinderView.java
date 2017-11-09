@@ -40,7 +40,7 @@ import java.util.List;
  *
  * @author dswitkin@google.com (Daniel Switkin)
  */
-public final class ViewfinderView extends View {
+public final class ViewfinderView extends View implements AnimeViewCallback {
 
   private static final int[] SCANNER_ALPHA = {0, 64, 128, 192, 255, 192, 128, 64};
   private static final long ANIMATION_DELAY = 80L;

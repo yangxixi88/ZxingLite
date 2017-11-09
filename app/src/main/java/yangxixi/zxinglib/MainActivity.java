@@ -30,5 +30,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button aliStart = (Button) findViewById(R.id.alipay_start);
+        aliStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AliCaptureActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

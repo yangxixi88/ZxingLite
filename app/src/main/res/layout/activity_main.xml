@@ -26,4 +26,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="模仿微信扫描启动" />
+
+    <Button
+        android:id="@+id/alipay_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wechat_start"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="模仿支付宝 AR 扫描" />
 </RelativeLayout>

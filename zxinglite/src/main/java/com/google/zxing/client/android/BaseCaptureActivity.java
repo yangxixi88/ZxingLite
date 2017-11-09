@@ -64,14 +64,14 @@ public abstract class BaseCaptureActivity extends Activity implements SurfaceHol
     public CameraManager cameraManager;
     private BeepManager beepManager;
     private CaptureActivityHandler handler;
-    private ViewfinderView viewfinderView;
+    private AnimeViewCallback viewCallback;
     private Collection<BarcodeFormat> decodeFormats;
     private Map<DecodeHintType, ?> decodeHints;
     private String characterSet;
     private IntentSource source;
 
-    public ViewfinderView getViewfinderView() {
-        return viewfinderView;
+    public AnimeViewCallback getViewfinderView() {
+        return viewCallback;
     }
 
     public Handler getHandler() {
@@ -102,9 +102,9 @@ public abstract class BaseCaptureActivity extends Activity implements SurfaceHol
     protected void onResume() {
         super.onResume();
         cameraManager = new CameraManager(getApplication());
-        viewfinderView = getViewfinderHolder();
-        if (viewfinderView != null) {
-            viewfinderView.setCameraManager(cameraManager);
+        viewCallback = getViewfinderHolder();
+        if (viewCallback != null) {
+            viewCallback.setCameraManager(cameraManager);
         }
 
         handler = null;
@@ -171,6 +171,7 @@ public abstract class BaseCaptureActivity extends Activity implements SurfaceHol
             SurfaceHolder surfaceHolder = surfaceView.getHolder();
             surfaceHolder.removeCallback(this);
         }
+
         super.onPause();
     }
 
@@ -345,8 +346,8 @@ public abstract class BaseCaptureActivity extends Activity implements SurfaceHol
     }
 
     public void drawViewfinder() {
-        if (viewfinderView != null) {
-            viewfinderView.drawViewfinder();
+        if (viewCallback != null) {
+            viewCallback.drawViewfinder();
         }
     }
 
@@ -393,7 +394,7 @@ public abstract class BaseCaptureActivity extends Activity implements SurfaceHol
      *
      * @return
      */
-    public ViewfinderView getViewfinderHolder() {
+    public AnimeViewCallback getViewfinderHolder() {
         return null;
     }
 

@@ -169,7 +169,7 @@ public final class CameraManager {
     }
 
     /**
-     * Convenience method for {@link com.google.zxing.client.android.CaptureActivity}
+     *
      *
      * @param newSetting if {@code true}, light should be turned on if currently off. And vice versa.
      */
@@ -350,6 +350,10 @@ public final class CameraManager {
         // Go ahead and assume it's YUV rather than die.
         return new PlanarYUVLuminanceSource(data, width, height, rect.left, rect.top,
                 rect.width(), rect.height(), false);
+    }
+
+    public void setFramingRect(Rect rect){
+        this.framingRect = rect;
     }
 
 }
