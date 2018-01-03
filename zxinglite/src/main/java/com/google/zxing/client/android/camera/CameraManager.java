@@ -224,9 +224,10 @@ public final class CameraManager {
                 // Called early, before init even finished
                 return null;
             }
-
+            //确定框大小
+            int size = Math.min(screenResolution.x, screenResolution.y);
             //这个长宽是用来计算识别区域的大小，如需修改识别区域大小，可从这个地方下手。
-            int width = findDesiredDimensionInRange(screenResolution.x, MIN_FRAME_WIDTH, MAX_FRAME_WIDTH);
+            int width = findDesiredDimensionInRange(size, MIN_FRAME_WIDTH, MAX_FRAME_WIDTH);
 //            int height = findDesiredDimensionInRange(screenResolution.y, MIN_FRAME_HEIGHT, MAX_FRAME_HEIGHT);
             int height = width; //改成正方形
 
